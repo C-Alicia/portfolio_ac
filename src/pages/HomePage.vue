@@ -1,4 +1,9 @@
 <template>
+
+    
+
+
+
     <h1>Principal page</h1>
 </template>
 
