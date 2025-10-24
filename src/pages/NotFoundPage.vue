@@ -1,25 +1,22 @@
 <template>
-    <center>
-        <section id="notfound">
-		<div class="notfound">
-			<div class="notfound-404">
-				<h1>Oops!</h1>
-			</div>
-			<h2>404 - Page not found</h2>
-			<p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
-			<a href="/">Go To Homepage</a>
-		</div>
-	</section>
-    </center>      
+
+  <section id="notfound">
+    <div class="notfound">
+      <div class="notfound404">
+        <h1>Oops!</h1>
+      </div>
+      <h2>404 - Page not found</h2>
+      <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+      <a href="/">Go To Homepage</a>
+    </div>
+  </section>
+
 
 </template>
 
 
 <script>
 
-export default {
-    name: 'NotFound'
-}
 
 </script>
 
@@ -34,8 +31,8 @@ export default {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .notfound {
@@ -44,13 +41,13 @@ export default {
   text-align: center;
 }
 
-.notfound .notfound-404 {
-  height: 280px;
+.notfound .notfound404 {
+  height: 300px;
   position: relative;
-  z-index: -1;
+  z-index: -1
 }
 
-.notfound .notfound-404 h1 {
+.notfound .notfound404 h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 230px;
   margin: 0px;
@@ -58,8 +55,8 @@ export default {
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
   background: url('/src/assets/img/bg.jpg') no-repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -98,17 +95,17 @@ export default {
   color: #fff;
   font-weight: 700;
   -webkit-box-shadow: 0px 4px 15px -5px #0046d5;
-          box-shadow: 0px 4px 15px -5px #0046d5;
+  box-shadow: 0px 4px 15px -5px #0046d5;
 }
 
 
 @media only screen and (max-width: 767px) {
-    .notfound .notfound-404 {
-      height: 142px;
-    }
-    .notfound .notfound-404 h1 {
-      font-size: 112px;
-    }
-}
+  .notfound .notfound-404 {
+    height: 142px;
+  }
 
+  .notfound .notfound-404 h1 {
+    font-size: 112px;
+  }
+}
 </style>
