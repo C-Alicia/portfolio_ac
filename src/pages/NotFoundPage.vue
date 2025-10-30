@@ -44,7 +44,7 @@
 .notfound .notfound404 {
   height: 300px;
   position: relative;
-  z-index: -1
+  z-index: -1;
 }
 
 .notfound .notfound404 h1 {

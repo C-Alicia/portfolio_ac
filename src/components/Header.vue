@@ -9,6 +9,7 @@
             <RouterLink to="/projets">Projets / Réalisations</RouterLink>
             <RouterLink to="/blog">Blog</RouterLink>
             <RouterLink to="/contact">Contact</RouterLink>
+            <Toogle />
         </nav>
     </header>
 </template>
@@ -17,6 +18,8 @@
 <script setup>
 import logoLight from '../assets/img/logo_light.svg'
 import logoDark from '../assets/img/logo_dark.svg'
+import Toogle from './Toogle.vue';
+
 </script>
 
 
