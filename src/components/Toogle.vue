@@ -91,11 +91,11 @@ input:checked+.slider:before {
 }
 
 [color-scheme='dark']{
-    background-color: rgb(40,75,99);
+    background-color: hsl(204, 42%, 27%);
 }
 
 [color-scheme='light']{
-    background-color: rgb(228,228,228);
+    background-color: rgb(255, 255, 255);
 }
 
 
