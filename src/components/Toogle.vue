@@ -1,102 +1,116 @@
 <template>
-
-    <body color-scheme="isDark ? 'dark' : 'light'">
-        <label class="switch">
-            <input type="checkbox" @click="toggleDark()">
-            <span class="slider round"></span>
-        </label>
-    </body>
+  <body color-scheme="isDark ? 'dark' : 'light'">
+    <label class="switch">
+      <input type="checkbox" @click="toggleDark()" />
+      <span class="slider">
+        <span class="icon sun">☀️</span>
+        <span class="icon moon">🌙</span>
+      </span>
+    </label>
+  </body>
 </template>
 
-
 <script setup>
+import { useDark, useToggle } from '@vueuse/core'
 
-import { useDark, useToggle } from '@vueuse/core';
+const isDark = useDark({
+  selector: 'body',
+  attribute: 'color-scheme',
+  valueDark: 'dark',
+  valueLight: 'light',
+})
 
-const isDark = useDark(
-    {
-        selector: 'body',
-        attribute: 'color-scheme',
-        valueDark: 'dark',
-        valueLight: 'light',
-
-    }
-)
-
-const toggleDark = useToggle(isDark);
+const toggleDark = useToggle(isDark)
 </script>
 
-
 <style>
+/* Conteneur du toggle */
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 36px;
 }
 
-/* Hide default HTML checkbox */
+/* Cacher le checkbox HTML */
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-/* The slider */
+/* Le slider principal */
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: linear-gradient(45deg, #f6d365, #fda085); /* Couleurs du mode jour */
+  border-radius: 34px;
+  transition: background 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+/* Icônes soleil et lune */
+.icon {
+  font-size: 1.2rem;
+  z-index: 2;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-input:checked+.slider {
-    background-color: #2196F3;
+.sun {
+  color: #facc15;
+  opacity: 1;
+  transform: translateX(0);
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
+.moon {
+  color: #cbd5e1;
+  opacity: 0;
+  transform: translateX(-10px);
 }
 
-input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+/* Le petit cercle qui glisse */
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
 }
 
-/* Rounded sliders */
-.slider.round {
-    border-radius: 34px;
+/* Quand le toggle est activé (mode sombre) */
+input:checked + .slider {
+  background: linear-gradient(45deg, #283e51, #485563);
 }
 
-.slider.round:before {
-    border-radius: 50%;
+input:checked + .slider .sun {
+  opacity: 0;
+  transform: translateX(10px) rotate(90deg);
 }
 
-[color-scheme='dark']{
-    background-color: hsl(204, 42%, 27%);
+input:checked + .slider .moon {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-[color-scheme='light']{
-    background-color: rgb(255, 255, 255);
+input:checked + .slider::before {
+  transform: translateX(34px);
 }
 
+/* Thèmes globaux */
+[color-scheme='dark'] {
+  background-color: hsl(204, 42%, 27%);
+}
 
+[color-scheme='light'] {
+  background-color: #ffffff;
+}
 </style>
