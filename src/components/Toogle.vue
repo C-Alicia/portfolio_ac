@@ -3,8 +3,8 @@
     <label class="switch">
       <input type="checkbox" @click="toggleDark()" />
       <span class="slider">
-        <span class="icon sun">☀️</span>
-        <span class="icon moon">🌙</span>
+        <span class="icon sun">✹</span>
+        <span class="icon moon">⏾</span>
       </span>
     </label>
   </body>
