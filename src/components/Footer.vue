@@ -31,7 +31,7 @@
             <div class="d-flex flex-column align-items-center align-items-md-start gap-2">
               <!-- Nom + logo -->
               <div class="d-flex align-items-center gap-2">
-                <img src="/src/assets/img/logo_light.svg" alt="Logo" class="footer-logo" />
+                <img :src="isDark ? '/src/assets/img/logo_dark.svg' : '/src/assets/img/logo_light.svg'" alt="Logo" class="footer-logo" />
                 <h6 class="fw-bold mb-0">Alicia CHAREF</h6>
               </div>
               <hr class="footer-hr" />
@@ -45,7 +45,6 @@
 
           <!-- Contact -->
           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Conteneur pour centrer texte en mobile mais pas la carte -->
             <div class="contact-text d-flex flex-column align-items-center align-items-md-start gap-2">
               <h6 class="fw-bold">Contact</h6>
               <hr class="footer-hr" />
@@ -66,7 +65,6 @@
               </p>
             </div>
 
-            <!-- Carte full width -->
             <div class="contact-map mt-3">
               <Map />
             </div>
@@ -142,6 +140,11 @@ h6 {
 .footer-logo {
   width: 30px;
   height: 30px;
+  transition: transform 0.4s ease;
+}
+
+.footer-logo:hover {
+  transform: rotate(-5deg) scale(1.05);
 }
 
 /* Avatar sous le texte */
@@ -150,9 +153,22 @@ h6 {
   opacity: 0.5;
   margin-top: 0.5rem;
   display: block;
+  transition: transform 0.3s ease;
 }
 
-/* Icônes sociales */
+.footer-watermark:hover {
+  transform: scale(1.05);
+}
+
+/* Icônes sociales avec effet “bounce” hover */
+@keyframes bounce-hover {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); }
+  30%  { transform: translateY(-5px) rotate(-5deg) scale(1.1); }
+  50%  { transform: translateY(0) rotate(0deg) scale(1.05); }
+  70%  { transform: translateY(-3px) rotate(-2deg) scale(1.1); }
+  100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+
 .social-icon {
   color: #FFFFFF;
   font-size: 1.25rem;
@@ -161,10 +177,12 @@ h6 {
 
 .footer-light .social-icon:hover {
   color: #284b63;
+  animation: bounce-hover 0.5s forwards;
 }
 
 .footer-dark .social-icon:hover {
   color: #F9BC60;
+  animation: bounce-hover 0.5s forwards;
 }
 
 /* Contact */
