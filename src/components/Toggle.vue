@@ -18,7 +18,11 @@ const isDark = useDark({
   attribute: 'color-scheme',
   valueDark: 'dark',
   valueLight: 'light',
+  storageKey: 'vueuse-color-scheme', // facultatif
 })
+if (isDark.value === undefined) {
+  isDark.value = false
+}
 
 const toggleDark = useToggle(isDark)
 </script>
@@ -107,7 +111,7 @@ input:checked + .slider::before {
 
 /* Thèmes globaux */
 [color-scheme='dark'] {
-  background-color: hsl(204, 42%, 27%);
+  background-color: rgb(40, 75, 98);
 }
 
 [color-scheme='light'] {

@@ -27,7 +27,7 @@ import { ref, computed } from 'vue'
 import { useDark } from '@vueuse/core'
 import logoLight from '../assets/img/logo_light.svg'
 import logoDark from '../assets/img/logo_dark.svg'
-import Toogle from './Toogle.vue'
+import Toogle from './Toggle.vue'
 
 // Mode sombre
 const isDark = useDark({
