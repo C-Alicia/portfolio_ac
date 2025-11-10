@@ -106,6 +106,7 @@ footer {
 
 .social-light {
   background-color: rgba(0, 0, 0, 0.9);
+   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .footer-dark {
@@ -113,7 +114,8 @@ footer {
 }
 
 .social-dark {
-  background-color: rgba(38, 65, 86, 0.9);
+  background-color: rgba(38, 65, 86, 0.95);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3); /* effet léger pour distinguer */
 }
 
 .copyright-light, .copyright-dark {
