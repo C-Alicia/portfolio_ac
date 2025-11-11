@@ -1,5 +1,5 @@
 <template>
-  <body color-scheme="isDark ? 'dark' : 'light'">
+  <section color-scheme="isDark ? 'dark' : 'light'">
     <label class="switch">
       <input type="checkbox" @click="toggleDark()" />
       <span class="slider">
@@ -7,7 +7,7 @@
         <span class="icon moon">⏾</span>
       </span>
     </label>
-  </body>
+  </section>
 </template>
 
 <script setup>
@@ -117,4 +117,5 @@ input:checked + .slider::before {
 [color-scheme='light'] {
   background-color: #ffffff;
 }
+
 </style>
