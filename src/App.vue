@@ -1,18 +1,37 @@
 <template>
-  <Header/>
+  <div>
+    <!-- Page de chargement -->
+    <Loader v-if="showLoader" />
 
-  <div class="container">
-    <RouterView/>
+    <!-- Contenu principal -->
+    <div v-else>
+      <Header />
+      <main class="container">
+        <RouterView />
+      </main>
+      <Footer />
+    </div>
   </div>
-
-  <Footer/>
-  
 </template>
 
-
 <script setup>
+import { ref, onMounted } from 'vue'
+import Loader from './components/Loader.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+
+const showLoader = ref(true)
+
+onMounted(() => {
+  // Empêche le scroll pendant le chargement
+  document.body.style.overflow = 'hidden'
+
+  // Simule le chargement (2.5 secondes)
+  setTimeout(() => {
+    showLoader.value = false
+    document.body.style.overflow = 'auto'
+  }, 2500)
+})
 </script>
 
 <style>
@@ -20,5 +39,4 @@ import Footer from './components/Footer.vue'
   padding-top: 2rem;
   max-width: calc(100vw - 4rem);
 }
-
 </style>
