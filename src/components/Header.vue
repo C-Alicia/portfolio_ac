@@ -1,4 +1,4 @@
-a<template>
+<template>
   <header class="header" :class="colorScheme">
     <RouterLink to="/" class="header__logo">
       <img :src="colorScheme === 'dark' ? logoDark : logoLight" alt="Logo du site" class="logo" />

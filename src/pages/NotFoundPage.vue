@@ -1,26 +1,25 @@
 <template>
-
   <section id="notfound">
     <div class="notfound">
       <div class="notfound404">
         <h1>Oops!</h1>
       </div>
       <h2>404 - Page not found</h2>
-      <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+      <p>
+        The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+      </p>
       <a href="/">Go To Homepage</a>
     </div>
   </section>
-
-
 </template>
 
-
-<script>
-
-
+<script setup>
+// plus besoin de data ou de logique ici : le toggle global gère tout
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&family=Work+Sans:wght@400;700&display=swap');
+
 #notfound {
   position: relative;
   height: 100vh;
@@ -30,32 +29,25 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-}
-
-.notfound {
-  max-width: 410px;
+  max-width: 90%;
   width: 100%;
   text-align: center;
 }
 
-.notfound .notfound404 {
+.notfound404 {
   height: 300px;
   position: relative;
   z-index: -1;
 }
 
-.notfound .notfound404 h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 230px;
-  margin: 0px;
+.notfound404 h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(100px, 20vw, 230px);
+  margin: 0;
   font-weight: 900;
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   background: url('/src/assets/img/bg.jpg') no-repeat;
   -webkit-background-clip: text;
@@ -64,9 +56,8 @@
   background-position: center;
 }
 
-
 .notfound h2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #000;
   font-size: 24px;
   font-weight: 700;
@@ -75,37 +66,46 @@
 }
 
 .notfound p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   color: #000;
   font-size: 14px;
   font-weight: 400;
-  margin-bottom: 20px;
-  margin-top: 0px;
+  margin: 10px 0 20px;
 }
 
 .notfound a {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: 14px;
   text-decoration: none;
   text-transform: uppercase;
-  background: #0046d5;
+  background: #F9BC60;
   display: inline-block;
   padding: 15px 30px;
-  border-radius: 40px;
-  color: #fff;
+  border-radius: 20px;
+  color: #000000;
   font-weight: 700;
-  -webkit-box-shadow: 0px 4px 15px -5px #0046d5;
-  box-shadow: 0px 4px 15px -5px #0046d5;
+  box-shadow: 0px 4px 15px -5px #F9BC60;
 }
 
+/* 🌙 Appliquer automatiquement quand le body est en dark */
+[color-scheme='dark'] #notfound h2,
+[color-scheme='dark'] #notfound p {
+  color: #fff;
+}
 
+/* Responsive */
 @media only screen and (max-width: 767px) {
-  .notfound .notfound-404 {
+  .notfound404 {
     height: 142px;
   }
 
-  .notfound .notfound-404 h1 {
-    font-size: 112px;
+  .notfound404 h1 {
+    font-size: 18vw;
+  }
+
+  .notfound a {
+    padding: 12px 25px;
+    font-size: 12px;
   }
 }
 </style>
