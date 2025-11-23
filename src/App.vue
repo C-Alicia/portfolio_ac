@@ -9,7 +9,9 @@
       <main class="container">
         <RouterView />
       </main>
-      <Footer />
+      <div id="contact">
+        <Footer />
+      </div>
     </div>
   </div>
 </template>

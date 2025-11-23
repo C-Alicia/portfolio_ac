@@ -38,12 +38,21 @@ const buttonClass = computed(() => {
 const handleClick = () => {
   if (!props.href) return;
 
-  // Vérifie si c'est un PDF ou un lien externe
-  if (props.href.startsWith('http') || props.href.endsWith('.pdf')) {
-    window.open(props.href, '_blank'); // ouvre PDF ou lien externe
-  } else {
-    router.push(props.href); // navigation interne
+  // Si href commence par #
+  if (props.href.startsWith('#')) {
+    const target = document.querySelector(props.href);
+    target?.scrollIntoView({ behavior: 'smooth' });
+    return;
   }
+
+  // Si c'est un PDF ou lien externe
+  if (props.href.startsWith('http') || props.href.endsWith('.pdf')) {
+    window.open(props.href, '_blank');
+    return;
+  }
+
+  // Sinon route interne Vue
+  router.push(props.href);
 };
 </script>
 
@@ -56,7 +65,7 @@ const handleClick = () => {
   border-radius: 10px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 15px;
   cursor: pointer;
   display: flex;
   align-items: center;
