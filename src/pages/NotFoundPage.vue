@@ -8,13 +8,16 @@
       <p>
         The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
       </p>
-      <a href="/">Go To Homepage</a>
+
+     <CustomButton text="Go to Home" href="/" />
+
     </div>
   </section>
 </template>
 
 <script setup>
 // plus besoin de data ou de logique ici : le toggle global gère tout
+import CustomButton from '@/components/CustomButton.vue';
 </script>
 
 <style scoped>
@@ -33,6 +36,10 @@
   max-width: 90%;
   width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centrer tout */
+  gap: 20px; /* espace vertical auto entre éléments */
 }
 
 .notfound404 {
@@ -73,20 +80,6 @@
   margin: 10px 0 20px;
 }
 
-.notfound a {
-  font-family: 'Work Sans', sans-serif;
-  font-size: 14px;
-  text-decoration: none;
-  text-transform: uppercase;
-  background: #F9BC60;
-  display: inline-block;
-  padding: 15px 30px;
-  border-radius: 20px;
-  color: #000000;
-  font-weight: 700;
-  box-shadow: 0px 4px 15px -5px #F9BC60;
-}
-
 /* 🌙 Appliquer automatiquement quand le body est en dark */
 [color-scheme='dark'] #notfound h2,
 [color-scheme='dark'] #notfound p {
@@ -101,11 +94,6 @@
 
   .notfound404 h1 {
     font-size: 18vw;
-  }
-
-  .notfound a {
-    padding: 12px 25px;
-    font-size: 12px;
   }
 }
 </style>
