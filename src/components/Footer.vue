@@ -39,7 +39,7 @@
               <p class="mb-2 text-center text-md-start">Conceptrice développeuse d'application basée dans l’ouest Lyonnais.</p>
 
               <!-- Image gravure / watermark -->
-              <img src="/src/assets/img/avatar_photo.png" alt="Avatar" class="footer-watermark" />
+              <img src="/src/assets/img/Avatar__lili.png" alt="Avatar" class="footer-watermark" />
             </div>
           </div>
 
@@ -151,8 +151,8 @@ h6 {
 
 /* Avatar sous le texte */
 .footer-watermark {
-  width: 150px;
-  opacity: 0.5;
+  width: 200px;
+  opacity: 0.6;
   margin-top: 0.5rem;
   display: block;
   transition: transform 0.3s ease;

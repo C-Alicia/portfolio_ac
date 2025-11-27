@@ -1,7 +1,7 @@
 <!-- src/components/Loader.vue -->
 <template>
   <div class="loader-container">
-    <img src="/src/assets/img/avatar_photo.png" alt="Logo" class="loader-logo" />
+    <img src="/src/assets/img/Avatar__lili.png" alt="Logo" class="loader-logo" />
   </div>
 </template>
 
@@ -26,7 +26,7 @@
 }
 
 .loader-logo {
-  width: 120px;
+  width: 300px;
   height: auto;
   animation: pulse 2s infinite ease-in-out;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
