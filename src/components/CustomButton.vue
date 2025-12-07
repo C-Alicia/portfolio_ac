@@ -90,7 +90,7 @@ const handleClick = () => {
 
 /* Hover effects */
 .custom-button.light:hover {
-  background-color: #f0f0f0;
+  background-color: #284b63;
   color: #000000;
 }
 

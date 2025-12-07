@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Page de chargement -->
-    <Loader v-if="showLoader" />
+    <Loader v-if="showLoader" @finished="hideLoader" />
 
     <!-- Contenu principal -->
     <div v-else>
@@ -17,28 +17,27 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import Loader from './components/Loader.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 
 const showLoader = ref(true)
 
-onMounted(() => {
-  // Empêche le scroll pendant le chargement
-  document.body.style.overflow = 'hidden'
+const hideLoader = () => {
+  showLoader.value = false
+  document.body.style.overflow = 'auto'
+}
 
-  // Simule le chargement (2.5 secondes)
-  setTimeout(() => {
-    showLoader.value = false
-    document.body.style.overflow = 'auto'
-  }, 2500)
-})
+// Empêche scroll pendant tout le loader
+document.body.style.overflow = 'hidden'
 </script>
 
 <style>
 .container {
-  padding-top: 2rem;
-  max-width: calc(100vw - 4rem);
+   margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
 }
 </style>
