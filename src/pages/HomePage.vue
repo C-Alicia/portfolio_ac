@@ -20,9 +20,15 @@
 
       <br>
 
-      <a href="#contact" @click="scrollToFooter">
-        <img src="/src/assets/img/mouse.svg" width="50" height="50" class="iconMouseBounce" alt="icon_mouse">
-      </a>
+      <router-link to="/propos">
+      <img
+        src="/src/assets/img/mouse.svg"
+        width="50"
+        height="50"
+        class="iconMouseBounce"
+        alt="icon_mouse"
+      />
+    </router-link>
 
 
   </section>
@@ -34,7 +40,7 @@
 import { ref } from 'vue'
 
 const scrollToFooter = () => {
-  document.querySelector("#contact").scrollIntoView({
+  document.querySelector("#Propos").scrollIntoView({
     behavior: "smooth"
   })
 }
