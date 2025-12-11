@@ -1,17 +1,15 @@
 <template>
-  <div>
+  <div id="app">
     <!-- Page de chargement -->
     <Loader v-if="showLoader" @finished="hideLoader" />
 
     <!-- Contenu principal -->
-    <div v-else>
+    <div v-else class="app-content">
       <Header />
-      <main class="container">
+      <main class="flex-grow">
         <RouterView />
       </main>
-      <div id="contact">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   </div>
 </template>
@@ -34,10 +32,29 @@ document.body.style.overflow = 'hidden'
 </script>
 
 <style>
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* 2. Contenu principal en flex pour pousser le footer */
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. Main qui pousse le footer */
+main.flex-grow {
+  flex: 1;
+}
+
+/* 4. Container global */
 .container {
-   margin: 0;
-  padding: 0;
   width: 100%;
   max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 </style>
