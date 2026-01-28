@@ -1,64 +1,54 @@
 <template>
-  <button
-    :class="buttonClass"
-    @click="handleClick"
-  >
-    <slot>{{ props.text }}</slot>
+  <button :class="buttonClass" @click="handleClick">
+    <!-- slot si utilisé, sinon texte -->
+    <slot>{{ text }}</slot>
   </button>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
-import { useDark } from '@vueuse/core';
-import { computed } from 'vue';
+import { useRouter } from 'vue-router'
+import { useDark } from '@vueuse/core'
+import { computed } from 'vue'
 
-// Définition des props
-const props = defineProps({
+// Déstructuration des props
+const { text, href } = defineProps({
   text: String,
-  href: String, // lien PDF ou route interne
-});
+  href: String
+})
 
-const router = useRouter();
+const router = useRouter()
 
-// Récupération de l'état global du toggle
+// Mode sombre / clair
 const isDark = useDark({
   selector: 'body',
   attribute: 'color-scheme',
   valueDark: 'dark',
-  valueLight: 'light',
-  storageKey: 'vueuse-color-scheme',
-});
+  valueLight: 'light'
+})
 
-// computed pour mettre à jour automatiquement la classe
-const buttonClass = computed(() => {
-  return ['custom-button', isDark.value ? 'dark' : 'light'];
-});
+// Classes dynamiques
+const buttonClass = computed(() => ['custom-button', isDark.value ? 'dark' : 'light'])
 
 // Gestion du clic
 const handleClick = () => {
-  if (!props.href) return;
+  if (!href) return
 
-  // Si href commence par #
-  if (props.href.startsWith('#')) {
-    const target = document.querySelector(props.href);
-    target?.scrollIntoView({ behavior: 'smooth' });
-    return;
+  if (href.startsWith('#')) {
+    const target = document.querySelector(href)
+    target?.scrollIntoView({ behavior: 'smooth' })
+    return
   }
 
-  // Si c'est un PDF ou lien externe
-  if (props.href.startsWith('http') || props.href.endsWith('.pdf')) {
-    window.open(props.href, '_blank');
-    return;
+  if (href.startsWith('http') || href.endsWith('.pdf')) {
+    window.open(href, '_blank')
+    return
   }
 
-  // Sinon route interne Vue
-  router.push(props.href);
-};
+  router.push(href)
+}
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
 .custom-button {
   width: 200px;
   height: 40px;
@@ -74,24 +64,21 @@ const handleClick = () => {
   border: 2px solid;
 }
 
-/* Light mode */
 .custom-button.light {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #353535;
   border-color: #000000;
 }
 
-/* Dark mode */
 .custom-button.dark {
-  background-color: #F9BC60;
+  background-color: #f9bc60;
   color: #353535;
   border-color: #000000;
 }
 
-/* Hover effects */
 .custom-button.light:hover {
   background-color: #284b63;
-  color: #000000;
+  color: #ffffff;
 }
 
 .custom-button.dark:hover {

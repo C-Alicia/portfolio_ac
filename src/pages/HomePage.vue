@@ -1,36 +1,30 @@
 <template>
 
   <section class="banner-image">
-    
- 
-      <h1 class="text-white font-bold text-5xl mb-4">
-        Bonjour & Bienvenue,
-      </h1>
 
 
-      <h2 class="text-white  align-items-center flex-wrap">
-        <span>Hi, je suis</span>
-        <div class="message">
-          <div class="word1">AliciaC</div>
-          <div class="word2">dev</div>
-          <div class="word3">créative</div>
-        </div>
-      </h2>
+    <h1 class="text-white font-bold text-5xl mb-4">
+      Bonjour & Bienvenue,
+    </h1>
 
 
-      <br>
+    <h2 class="text-white  align-items-center flex-wrap">
+      <span>Hi, je suis</span>
+      <div class="message">
+        <div class="word1">AliciaC</div>
+        <div class="word2">dev</div>
+        <div class="word3">créative</div>
+      </div>
+    </h2>
 
+
+    <br>
+      <transition name="parallax" mode="out-in">
       <router-link to="/propos">
-      <img
-        src="/src/assets/img/mouse.svg"
-        width="50"
-        height="50"
-        class="iconMouseBounce"
-        alt="icon_mouse"
-      />
-    </router-link>
+        <img src="/src/assets/img/mouse.svg" width="50" height="50" class="iconMouseBounce" alt="icon_mouse" />
+      </router-link>
 
-
+    </transition>
   </section>
 
 
@@ -47,14 +41,10 @@ const scrollToFooter = () => {
 </script>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-}
-
 .banner-image {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background-image: url("/src/assets/img/backgroundHomePageLight.jpeg");
+  background-image: url("/src/assets/img/Bg_alicia_banner.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -83,7 +73,7 @@ h2 span {
 
 .message {
   color: whitesmoke;
-  display: block;  
+  display: block;
   font-weight: 800;
   overflow: hidden;
   position: absolute;
@@ -201,33 +191,60 @@ h2 span {
   }
 }
 
+.parallax-enter-active,
+.parallax-leave-active {
+  position: absolute;
+  width: 100%;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
+              opacity 0.8s ease;
+}
+
+/* Page qui arrive (plus lente → parallax) */
+.parallax-enter-from {
+  transform: translateY(80px) scale(1.05);
+  opacity: 0;
+}
+
+/* Page qui part (plus rapide → profondeur) */
+.parallax-leave-to {
+  transform: translateY(-80px) scale(0.95);
+  opacity: 0;
+}
+
+
 /* Mobile: désactiver parallax */
 @media (max-width: 991px) {
   .banner-image {
     background-attachment: scroll;
   }
 
-  h1, h2 {
+  h1,
+  h2 {
     text-align: center;
   }
 
   h2 {
     display: flex;
-    flex-direction: column;  /* mots empilés */
+    flex-direction: column;
+    /* mots empilés */
     align-items: center;
     justify-content: center;
-    white-space: normal;     /* permet le wrap */
+    white-space: normal;
+    /* permet le wrap */
     width: 100%;
     overflow: visible;
   }
 
   h2 span {
-    margin-bottom: 0.5rem; /* espace sous "Hi, je suis" */
+    margin-bottom: 0.5rem;
+    /* espace sous "Hi, je suis" */
   }
 
   .message {
-    position: static;      /* plus absolute */
-    animation: none;       /* désactive l'animation */
+    position: static;
+    /* plus absolute */
+    animation: none;
+    /* désactive l'animation */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -238,7 +255,9 @@ h2 span {
     overflow: hidden;
   }
 
-  .word1, .word2, .word3 {
+  .word1,
+  .word2,
+  .word3 {
     position: static;
     display: block;
     opacity: 1;

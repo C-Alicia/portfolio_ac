@@ -26,8 +26,8 @@
 
     <!-- Section colonnes du footer -->
     <section>
-      <div class="container text-center text-md-start mt-5">
-          <div class="row mt-3 g-0 gx-5 justify-content-evenly">
+      <div class="container-fluid text-center text-md-start mt-5 px-4">
+        <div class="row mt-3 g-0 justify-content-center gx-5">
           <!-- Colonne Alicia CHAREF -->
           <div class="col-md-3 col-lg-4 col-xl-3 mb-4 ps-md-0">
             <div class="d-flex flex-column align-items-center align-items-md-start gap-2">
@@ -38,7 +38,7 @@
               </div>
               <hr class="footer-hr" />
               <p class="mb-2 text-center text-md-start">
-                Conceptrice développeuse d'application <br> basée dans l’ouest Lyonnais.
+                Conceptrice développeuse d'application <br>basée dans l’ouest Lyonnais.
               </p>
               <img src="/src/assets/img/Avatar__lili.png" alt="Avatar" class="footer-watermark" />
             </div>
@@ -68,8 +68,7 @@
               <Map />
             </div>
           </div>
-          
-          
+
         </div>
       </div>
     </section>
