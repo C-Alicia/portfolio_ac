@@ -9,7 +9,9 @@
       <main class="flex-grow">
         <RouterView />
       </main>
-      <Footer />
+      <div id="contact">
+        <Footer />
+      </div>
     </div>
   </div>
 </template>
@@ -32,10 +34,11 @@ document.body.style.overflow = 'hidden'
 </script>
 
 <style>
-
-
 * {
   box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 /* 2. Contenu principal en flex pour pousser le footer */
