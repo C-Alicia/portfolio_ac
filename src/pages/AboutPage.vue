@@ -69,12 +69,28 @@
               <CustomButton text="Consulter mon CV" href="/src/assets/CV_Alicia.pdf" />
               <CustomButton text="Me contacter" href="#contact" />
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
+
+       <!-- STATS (SANS GRID) -->
+    <section class="stats-section">
+      <div class="container-fluid px-5">
+        <div class="stats-wrapper">
+          <StatCard
+            v-for="(stat, index) in stats"
+            :key="index"
+            :icon="stat.icon"
+            :value="stat.value"
+            :label="stat.label"
+          />
+        </div>
+      </div>
+    </section>
+
+
+
   </main>
 </template>
 
@@ -82,6 +98,7 @@
 import { useDark } from '@vueuse/core'
 import { ref } from 'vue'
 import CustomButton from '@/components/CustomButton.vue'  // <-- ajuste le chemin selon ton projet
+import StatCard from '@/components/StatCard.vue'
 
 const isDark = useDark({
   selector: 'body',
@@ -95,6 +112,19 @@ const hoverImage = '/src/assets/img/image_about_me.png'
 const currentImage = ref(defaultImage)
 const changeImage = () => currentImage.value = hoverImage
 const resetImage = () => currentImage.value = defaultImage
+
+/* Images */
+import baliseIcon from '/src/assets/img/iconBaliseChevron.png'
+import babyIcon from '/src/assets/img/iconBaby.png'
+import hairIcon from '/src/assets/img/iconHair.png'
+import projectIcon from '/src/assets/img/IconProject.png'
+
+const stats = [
+  { icon: baliseIcon, value: 2, label: 'Années d’expérience' },
+  { icon: babyIcon, value: 35, label: 'Années de vie' },
+  { icon: hairIcon, value: 10, label: 'Cheveux gris' },
+  { icon: projectIcon, value: 5, label: 'Projets réalisés' },
+]
 
 </script>
 
@@ -171,6 +201,21 @@ h3 {
   border: none;
 }
 
+/* Partie icone section  */
+.stats-section {
+  padding: 6rem 0;
+  background: #e6e6e6;
+}
+
+.stats-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .about-moi .col-12 {
@@ -182,5 +227,10 @@ h3 {
     margin-bottom: 2rem;
     /* espace sous la photo en mobile */
   }
+    .stats-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
 }
 </style>
