@@ -74,23 +74,39 @@
       </div>
     </section>
 
-       <!-- STATS (SANS GRID) -->
+    <!-- STATS (SANS GRID) -->
     <section class="stats-section">
       <div class="container-fluid px-5">
         <div class="stats-wrapper">
-          <StatCard
-            v-for="(stat, index) in stats"
-            :key="index"
-            :icon="stat.icon"
-            :value="stat.value"
-            :label="stat.label"
-          />
+          <StatCard v-for="(stat, index) in stats" :key="index" :icon="stat.icon" :value="stat.value"
+            :label="stat.label" />
         </div>
       </div>
     </section>
 
+    <section class="hobbie-section py-5" :class="isDark ? 'about-dark' : 'about-light'">
+      <div class="container-fluid px-5">
+        <div class="row mb-5">
+          <div class="col-12 col-md-10 offset-md-1 d-flex flex-column align-items-start">
+            <h2 :class="['mb-2', isDark ? 'title-dark' : 'title-light']">A propos de mes</h2>
+            <h3 :class="['mb-3', isDark ? 'title-dark' : 'title-light']">Centres d'intérêt</h3>
 
-
+            <div class="ratio ratio-16x9 w-100 w-md-75 w-lg-50 mx-auto mb-4">
+              <img src="/src/assets/img/background_hobbies.png" alt="affiche hobbies" 
+                class="img-fluid rounded object-fit-cover hobbie-photo-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Partie components card hobbies -->
+    <section class="hobbies-card-section py-5" :class="isDark ? 'about-dark' : 'about-light'">
+      <div class="container-fluid px-5">
+        <div class="hobbies-wrapper">
+          <HobbieCard v-for="(hobbie, index) in hobbies" :key="index" :icon="hobbie.icon" :label="hobbie.label" />
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -99,6 +115,8 @@ import { useDark } from '@vueuse/core'
 import { ref } from 'vue'
 import CustomButton from '@/components/CustomButton.vue'  // <-- ajuste le chemin selon ton projet
 import StatCard from '@/components/StatCard.vue'
+import HobbieCard from '@/components/HobbieCard.vue'
+
 
 const isDark = useDark({
   selector: 'body',
@@ -113,7 +131,7 @@ const currentImage = ref(defaultImage)
 const changeImage = () => currentImage.value = hoverImage
 const resetImage = () => currentImage.value = defaultImage
 
-/* Images */
+/* Images stat */
 import baliseIcon from '/src/assets/img/iconBaliseChevron.png'
 import babyIcon from '/src/assets/img/iconBaby.png'
 import hairIcon from '/src/assets/img/iconHair.png'
@@ -125,6 +143,22 @@ const stats = [
   { icon: hairIcon, value: 10, label: 'Cheveux gris' },
   { icon: projectIcon, value: 5, label: 'Projets réalisés' },
 ]
+
+/* Partie centres d'intérêt + images */
+
+import VoyageIcon from '/src/assets/img/iconVoyage.png'
+import JeuxVideoIcon from '/src/assets/img/iconJeuxVideo.png'
+import PhotographieIcon from '/src/assets/img/iconPhotographie.png'
+import CinemaIcon from '/src/assets/img/iconCinema.png'
+
+
+const hobbies = [
+  { icon: VoyageIcon, label: 'Voyages' },
+  { icon: JeuxVideoIcon, label: 'Jeux vidéo' },
+  { icon: PhotographieIcon, label: 'Photographie' },
+  { icon: CinemaIcon, label: 'Cinéma' }
+]
+
 
 </script>
 
@@ -182,7 +216,6 @@ h3 {
 
 .about-photo-img {
   max-width: 480px;
-  /* ajuste : 200 / 220 / 260 / 300 */
   width: 100%;
   height: auto;
 }
@@ -194,20 +227,30 @@ h3 {
 
 /* BOUTONS */
 
-
 .btn-dark {
   background: #ffc107;
   color: #000;
   border: none;
 }
 
-/* Partie icone section  */
-.stats-section {
+/* Partie icone section */
+.stats-section,
+.hobbies-section,
+.hobbies-card-section {
   padding: 6rem 0;
-  background: #e6e6e6;
+  margin: 80px 0 80px 0;
+  background: rgba(255, 255, 255, 0.9);
 }
 
-.stats-wrapper {
+/* Dark mode */
+[color-scheme='dark'] .stats-section,
+[color-scheme='dark'] .hobbies-card-section {
+  background: rgba(40, 75, 99, 0.8);
+}
+
+/* Wrapper cards */
+.stats-wrapper,
+.hobbies-wrapper {
   display: flex;
   justify-content: center;
   gap: 2rem;
@@ -215,6 +258,7 @@ h3 {
 }
 
 
+/* Dark mode */
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
@@ -223,14 +267,19 @@ h3 {
     align-items: center !important;
   }
 
+  .hobbie-section .col-12 {
+    text-align: center;
+    align-items: center !important;
+  }
+
   .about-photo-img {
     margin-bottom: 2rem;
-    /* espace sous la photo en mobile */
   }
-    .stats-wrapper {
-    flex-direction: column;
-    align-items: center;
+
+  .hobbie-photo-img{
+    margin-top: 2rem;
   }
+
 
 }
 </style>
