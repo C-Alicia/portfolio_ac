@@ -12,7 +12,7 @@ import 'leaflet/dist/leaflet.css'
 const mapContainer = ref(null)
 
 onMounted(() => {
-  const position = [45.6744, 4.7546] // Brignais
+    const position = [45.5017, -73.5673];    // Montréal, Québec
 
   // Création de la carte
   const map = L.map(mapContainer.value).setView(position, 12)
