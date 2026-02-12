@@ -33,5 +33,6 @@ defineProps({
   color: #D9D9D9;
   margin-top: 0.5rem;
   font-size: 1rem;
+  font-weight: 600;
 }
 </style>
