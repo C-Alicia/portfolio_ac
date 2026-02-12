@@ -38,7 +38,7 @@
               </div>
               <hr class="footer-hr" />
               <p class="mb-2 text-center text-md-start">
-                Conceptrice développeuse d'application <br>basée dans l’ouest Lyonnais.
+                Conceptrice développeuse d'application <br>issue dans l’ouest Lyonnais. Actuellement, au Québec, à Montréal, pour un PVT de 2 ans. 
               </p>
               <img src="/src/assets/img/Avatar__lili.png" alt="Avatar" class="footer-watermark" />
             </div>
@@ -55,11 +55,11 @@
               </p>
               <p class="contact-item">
                 <i class="fas fa-phone contact-icon"></i>
-                +33 6 12 09 81 26
+                +1 263 378-1986 
               </p>
               <p class="contact-item">
                 <i class="fas fa-home contact-icon"></i>
-                Brignais, France
+                Montréal, Québec, Canada
               </p>
             </div>
 
