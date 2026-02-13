@@ -158,12 +158,9 @@ const hobbies = [
   { icon: PhotographieIcon, label: 'Photographie' },
   { icon: CinemaIcon, label: 'Cinéma' }
 ]
-
-
 </script>
 
 <style scoped>
-/* RESET & PARALLAX */
 .parallax-video {
   position: relative;
   width: 100%;
@@ -226,7 +223,6 @@ h3 {
 }
 
 /* BOUTONS */
-
 .btn-dark {
   background: #ffc107;
   color: #000;
@@ -241,6 +237,13 @@ h3 {
   margin: 80px 0 80px 0;
   background: rgba(255, 255, 255, 0.9);
 }
+
+
+/* Partie  */
+.hobbie-photo-img{
+  margin-top: 2rem;
+}
+
 
 /* Dark mode */
 [color-scheme='dark'] .stats-section,

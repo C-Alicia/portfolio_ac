@@ -6,9 +6,15 @@
     <!-- Contenu principal -->
     <div v-else class="app-content">
       <Header />
+
       <main class="flex-grow">
-        <RouterView />
+        <RouterView v-slot="{ Component, route }">
+          <transition name="page" mode="out-in">
+            <component :is="Component" :key="route.fullPath" />
+          </transition>
+        </RouterView>
       </main>
+
       <div id="contact">
         <Footer />
       </div>
@@ -17,7 +23,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import Loader from './components/Loader.vue'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
@@ -29,35 +35,44 @@ const hideLoader = () => {
   document.body.style.overflow = 'auto'
 }
 
-// Empêche scroll pendant tout le loader
-document.body.style.overflow = 'hidden'
+onMounted(() => {
+  // Empêche le scroll uniquement pendant le loader
+  document.body.style.overflow = 'hidden'
+})
 </script>
 
 <style>
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
 }
 
-/* 2. Contenu principal en flex pour pousser le footer */
 .app-content {
-  flex: 1;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* 3. Main qui pousse le footer */
 main.flex-grow {
   flex: 1;
 }
 
-/* 4. Container global */
-.container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
+/* 🎬 Transition pages */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-40px);
 }
 </style>

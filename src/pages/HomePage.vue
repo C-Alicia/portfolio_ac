@@ -1,14 +1,10 @@
 <template>
-
   <section class="banner-image">
-
-
     <h1 class="text-white font-bold text-5xl mb-4">
       Bonjour & Bienvenue,
     </h1>
 
-
-    <h2 class="text-white  align-items-center flex-wrap">
+    <h2 class="text-white align-items-center flex-wrap">
       <span>Hi, je suis</span>
       <div class="message">
         <div class="word1">AliciaC</div>
@@ -17,30 +13,27 @@
       </div>
     </h2>
 
+    <br />
 
-    <br>
-      <transition name="parallax" mode="out-in">
-      <router-link to="/propos">
-        <img src="/src/assets/img/mouse.svg" width="50" height="50" class="iconMouseBounce" alt="icon_mouse" />
-      </router-link>
-
-    </transition>
+    <!-- Navigation fluide (Vue Router) -->
+    <router-link to="/propos">
+      <img
+        src="/src/assets/img/mouse.svg"
+        width="50"
+        height="50"
+        class="iconMouseBounce"
+        alt="icon_mouse"
+      />
+    </router-link>
   </section>
-
-
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const scrollToFooter = () => {
-  document.querySelector("#Propos").scrollIntoView({
-    behavior: "smooth"
-  })
-}
+// Rien à gérer ici pour la navigation
 </script>
 
 <style scoped>
+/* === HERO === */
 .banner-image {
   width: 100%;
   height: 100vh;
@@ -54,8 +47,8 @@ const scrollToFooter = () => {
   flex-direction: column;
 }
 
+/* === TITRES === */
 h2 {
-  color: #333;
   font-family: poppins, sans-serif;
   font-size: 3rem;
   font-weight: 100;
@@ -71,11 +64,10 @@ h2 span {
   margin-left: 10px;
 }
 
+/* === TEXTE ANIMÉ === */
 .message {
   color: whitesmoke;
-  display: block;
   font-weight: 800;
-  overflow: hidden;
   position: absolute;
   padding-left: 0.5rem;
   top: 0.2rem;
@@ -89,135 +81,34 @@ h2 span {
   font-family: tahoma;
 }
 
+/* Animation mots */
 @keyframes openclose {
-  0% {
-    top: 0.2rem;
-    width: 0;
-  }
-
-  5% {
-    width: 0;
-  }
-
-  15% {
-    width: 230px;
-  }
-
-  30% {
-    top: 0.2rem;
-    width: 230px;
-  }
-
-  33% {
-    top: 0.2rem;
-    width: 0;
-  }
-
-  35% {
-    top: 0.2rem;
-    width: 0;
-  }
-
-  38% {
-    top: -4.5rem;
-  }
-
-  48% {
-    top: -4.5rem;
-    width: 190px;
-  }
-
-  62% {
-    top: -4.5rem;
-    width: 190px;
-  }
-
-  66% {
-    top: -4.5rem;
-    width: 0;
-    text-indent: 0;
-  }
-
-  71% {
-    top: -9rem;
-    width: 0;
-    text-indent: 5px;
-  }
-
-  86% {
-    top: -9rem;
-    width: 285px;
-  }
-
-  95% {
-    top: -9rem;
-    width: 285px;
-  }
-
-  98% {
-    top: -9rem;
-    width: 0;
-    text-indent: 5px;
-  }
-
-  100% {
-    top: 0;
-    width: 0;
-    text-indent: 0;
-  }
+  0% { top: 0.2rem; width: 0; }
+  15% { width: 230px; }
+  30% { width: 230px; }
+  33% { width: 0; }
+  38% { top: -4.5rem; }
+  48% { top: -4.5rem; width: 190px; }
+  62% { width: 190px; }
+  71% { top: -9rem; width: 0; }
+  86% { top: -9rem; width: 285px; }
+  95% { width: 285px; }
+  100% { top: 0; width: 0; }
 }
 
-/* === Bounce souris === */
+/* === SOURIS === */
 .iconMouseBounce {
   animation: bounce 1.8s infinite ease-in-out;
 }
 
 @keyframes bounce {
-
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-
-  40% {
-    transform: translateY(-15px);
-  }
-
-  60% {
-    transform: translateY(-7px);
-  }
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-15px); }
+  60% { transform: translateY(-7px); }
 }
 
-.parallax-enter-active,
-.parallax-leave-active {
-  position: absolute;
-  width: 100%;
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
-              opacity 0.8s ease;
-}
-
-/* Page qui arrive (plus lente → parallax) */
-.parallax-enter-from {
-  transform: translateY(80px) scale(1.05);
-  opacity: 0;
-}
-
-/* Page qui part (plus rapide → profondeur) */
-.parallax-leave-to {
-  transform: translateY(-80px) scale(0.95);
-  opacity: 0;
-}
-
-
-/* Mobile: désactiver parallax */
+/* === MOBILE === */
 @media (max-width: 991px) {
-  .banner-image {
-    background-attachment: scroll;
-  }
-
   h1,
   h2 {
     text-align: center;
@@ -226,41 +117,27 @@ h2 span {
   h2 {
     display: flex;
     flex-direction: column;
-    /* mots empilés */
     align-items: center;
-    justify-content: center;
     white-space: normal;
-    /* permet le wrap */
     width: 100%;
     overflow: visible;
   }
 
   h2 span {
     margin-bottom: 0.5rem;
-    /* espace sous "Hi, je suis" */
   }
 
   .message {
     position: static;
-    /* plus absolute */
     animation: none;
-    /* désactive l'animation */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: auto;
-    height: auto;
-    padding-left: 0;
-    overflow: hidden;
   }
 
   .word1,
   .word2,
   .word3 {
-    position: static;
-    display: block;
-    opacity: 1;
     margin: 0.3rem 0;
     text-align: center;
   }
