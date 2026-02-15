@@ -8,7 +8,8 @@
   </header>
 
   <main>
-    <section class="about-moi py-5" :class="isDark ? 'about-dark' : 'about-light'">
+    <!-- Première section : About-moi -->
+    <section class="about-moi first-section" :class="isDark ? 'about-dark' : 'about-light'">
       <div class="container-fluid px-5">
 
         <div class="row mb-5">
@@ -24,7 +25,6 @@
             </p>
           </div>
         </div>
-
 
         <div class="row align-items-start">
           <!-- PHOTO -->
@@ -74,7 +74,7 @@
       </div>
     </section>
 
-    <!-- STATS (SANS GRID) -->
+    <!-- STATS -->
     <section class="stats-section">
       <div class="container-fluid px-5">
         <div class="stats-wrapper">
@@ -84,6 +84,7 @@
       </div>
     </section>
 
+    <!-- HOBBIES -->
     <section class="hobbie-section py-5" :class="isDark ? 'about-dark' : 'about-light'">
       <div class="container-fluid px-5">
         <div class="row mb-5">
@@ -92,14 +93,15 @@
             <h3 :class="['mb-3', isDark ? 'title-dark' : 'title-light']">Centres d'intérêt</h3>
 
             <div class="ratio ratio-16x9 w-100 w-md-75 w-lg-50 mx-auto mb-4">
-              <img src="/src/assets/img/background_hobbies.png" alt="affiche hobbies" 
+              <img src="/src/assets/img/background_hobbies.png" alt="affiche hobbies"
                 class="img-fluid rounded object-fit-cover hobbie-photo-img" />
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Partie components card hobbies -->
+
+    <!-- Hobbies cards -->
     <section class="hobbies-card-section py-5" :class="isDark ? 'about-dark' : 'about-light'">
       <div class="container-fluid px-5">
         <div class="hobbies-wrapper">
@@ -113,10 +115,9 @@
 <script setup>
 import { useDark } from '@vueuse/core'
 import { ref } from 'vue'
-import CustomButton from '@/components/CustomButton.vue'  // <-- ajuste le chemin selon ton projet
+import CustomButton from '@/components/CustomButton.vue'
 import StatCard from '@/components/StatCard.vue'
 import HobbieCard from '@/components/HobbieCard.vue'
-
 
 const isDark = useDark({
   selector: 'body',
@@ -145,12 +146,10 @@ const stats = [
 ]
 
 /* Partie centres d'intérêt + images */
-
 import VoyageIcon from '/src/assets/img/iconVoyage.png'
 import JeuxVideoIcon from '/src/assets/img/iconJeuxVideo.png'
 import PhotographieIcon from '/src/assets/img/iconPhotographie.png'
 import CinemaIcon from '/src/assets/img/iconCinema.png'
-
 
 const hobbies = [
   { icon: VoyageIcon, label: 'Voyages' },
@@ -238,12 +237,10 @@ h3 {
   background: rgba(255, 255, 255, 0.9);
 }
 
-
 /* Partie  */
-.hobbie-photo-img{
+.hobbie-photo-img {
   margin-top: 2rem;
 }
-
 
 /* Dark mode */
 [color-scheme='dark'] .stats-section,
@@ -256,20 +253,14 @@ h3 {
 .hobbies-wrapper {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 6rem;
   flex-wrap: wrap;
 }
 
-
-/* Dark mode */
-
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .about-moi .col-12 {
-    text-align: center;
-    align-items: center !important;
-  }
 
+  .about-moi .col-12,
   .hobbie-section .col-12 {
     text-align: center;
     align-items: center !important;
@@ -279,10 +270,8 @@ h3 {
     margin-bottom: 2rem;
   }
 
-  .hobbie-photo-img{
+  .hobbie-photo-img {
     margin-top: 2rem;
   }
-
-
-}
+  }
 </style>

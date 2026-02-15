@@ -17,13 +17,7 @@
 
     <!-- Navigation fluide (Vue Router) -->
     <router-link to="/propos">
-      <img
-        src="/src/assets/img/mouse.svg"
-        width="50"
-        height="50"
-        class="iconMouseBounce"
-        alt="icon_mouse"
-      />
+      <img src="/src/assets/img/mouse.svg" width="50" height="50" class="iconMouseBounce" alt="icon_mouse" />
     </router-link>
   </section>
 </template>
@@ -49,6 +43,7 @@
 
 /* === TITRES === */
 h2 {
+  color: #333;
   font-family: poppins, sans-serif;
   font-size: 3rem;
   font-weight: 100;
@@ -67,7 +62,9 @@ h2 span {
 /* === TEXTE ANIMÉ === */
 .message {
   color: whitesmoke;
+  display: block;
   font-weight: 800;
+  overflow: hidden;
   position: absolute;
   padding-left: 0.5rem;
   top: 0.2rem;
@@ -83,17 +80,81 @@ h2 span {
 
 /* Animation mots */
 @keyframes openclose {
-  0% { top: 0.2rem; width: 0; }
-  15% { width: 230px; }
-  30% { width: 230px; }
-  33% { width: 0; }
-  38% { top: -4.5rem; }
-  48% { top: -4.5rem; width: 190px; }
-  62% { width: 190px; }
-  71% { top: -9rem; width: 0; }
-  86% { top: -9rem; width: 285px; }
-  95% { width: 285px; }
-  100% { top: 0; width: 0; }
+  0% {
+    top: 0.2rem;
+    width: 0;
+  }
+
+  5% {
+    width: 0;
+  }
+
+  15% {
+    width: 230px;
+  }
+
+  30% {
+    top: 0.2rem;
+    width: 230px;
+  }
+
+  33% {
+    top: 0.2rem;
+    width: 0;
+  }
+
+  35% {
+    top: 0.2rem;
+    width: 0;
+  }
+
+  38% {
+    top: -4.5rem;
+  }
+
+  48% {
+    top: -4.5rem;
+    width: 190px;
+  }
+
+  62% {
+    top: -4.5rem;
+    width: 190px;
+  }
+
+  66% {
+    top: -4.5rem;
+    width: 0;
+    text-indent: 0;
+  }
+
+  71% {
+    top: -9rem;
+    width: 0;
+    text-indent: 5px;
+  }
+
+  86% {
+    top: -9rem;
+    width: 285px;
+  }
+
+  95% {
+    top: -9rem;
+    width: 285px;
+  }
+
+  98% {
+    top: -9rem;
+    width: 0;
+    text-indent: 5px;
+  }
+
+  100% {
+    top: 0;
+    width: 0;
+    text-indent: 0;
+  }
 }
 
 /* === SOURIS === */
@@ -102,13 +163,27 @@ h2 span {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-15px); }
-  60% { transform: translateY(-7px); }
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-15px);
+  }
+
+  60% {
+    transform: translateY(-7px);
+  }
 }
 
 /* === MOBILE === */
 @media (max-width: 991px) {
+
   h1,
   h2 {
     text-align: center;

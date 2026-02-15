@@ -18,11 +18,11 @@ const isDark = useDark({
   attribute: 'color-scheme',
   valueDark: 'dark',
   valueLight: 'light',
-  storageKey: 'vueuse-color-scheme', // facultatif
+  storageKey: 'vueuse-color-scheme',
+  initialValue: 'light',
+  disableTransition: false,
 })
-if (isDark.value === undefined) {
-  isDark.value = false
-}
+
 
 const toggleDark = useToggle(isDark)
 </script>
