@@ -26,15 +26,16 @@
           </div>
         </div>
 
-        <div class="row align-items-start">
+        <div class="row align-items-start offset-md-1">
           <!-- PHOTO -->
-          <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-end pe-md-4">
+          <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-start">
             <div class="photo-hover-wrapper">
               <img :src="currentImage" alt="Image dynamique" class="img-fluid rounded about-photo-img"
                 @mouseover="changeImage" @mouseleave="resetImage" />
             </div>
           </div>
 
+          <!-- TEXTE -->
           <div class="col-12 col-md-6 d-flex flex-column ps-md-4">
             <div class="d-flex align-items-center mb-3">
               <h2 :class="['mb-0', isDark ? 'title-dark' : 'title-light']">Quelques mots sur moi</h2>
@@ -71,6 +72,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -214,6 +216,7 @@ h3 {
   max-width: 480px;
   width: 100%;
   height: auto;
+
 }
 
 .book-icon {
@@ -273,5 +276,5 @@ h3 {
   .hobbie-photo-img {
     margin-top: 2rem;
   }
-  }
+}
 </style>
