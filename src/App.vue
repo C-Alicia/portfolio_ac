@@ -1,24 +1,25 @@
 <template>
   <div id="app">
-    <!-- Page de chargement -->
+    
+    <!-- ✅ Loader affiché AU-DESSUS, sans bloquer l’app -->
     <Loader v-if="showLoader" @finished="hideLoader" />
 
-    <!-- Contenu principal -->
-    <div v-else class="app-content">
+    <!-- ✅ L'app est TOUJOURS rendue -->
+    <div class="app-content">
       <Header />
 
       <main class="flex-grow">
         <RouterView v-slot="{ Component, route }">
-          <transition name="page" mode="out-in">
+          <transition name="page">
+            <!-- 🔥 clé obligatoire -->
             <component :is="Component" :key="route.fullPath" />
           </transition>
         </RouterView>
       </main>
 
-      <div id="contact">
-        <Footer />
-      </div>
+      <Footer />
     </div>
+
   </div>
 </template>
 
@@ -36,8 +37,13 @@ const hideLoader = () => {
 }
 
 onMounted(() => {
-  // Empêche le scroll uniquement pendant le loader
   document.body.style.overflow = 'hidden'
+
+  // 🔥 sécurité : si le loader ne répond pas
+  setTimeout(() => {
+    showLoader.value = false
+    document.body.style.overflow = 'auto'
+  }, 3000)
 })
 </script>
 
@@ -60,19 +66,14 @@ main.flex-grow {
   flex: 1;
 }
 
-/* 🎬 Transition pages */
+/* Transition plus safe */
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.3s ease;
 }
 
-.page-enter-from {
-  opacity: 0;
-  transform: translateY(40px);
-}
-
+.page-enter-from,
 .page-leave-to {
   opacity: 0;
-  transform: translateY(-40px);
 }
 </style>
